@@ -11,12 +11,12 @@ const PORT = +process.env.PORT || 3001;
 
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
-  let connectionString = "postgresql:///";
+  let connectionString;
 
   if (process.env.NODE_ENV === "test") {
-    connectionString += "jobly_test";
+    connectionString = "postgresql:///jobly_test";
   } else {
-    connectionString += process.env.DATABASE_URL || "jobly";
+    connectionString = process.env.DATABASE_URL || "postgresql:///jobly";
   }
 
   return connectionString;
